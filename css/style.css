@@ -308,6 +308,7 @@ ul {
   height: 140px;
   font-size: 3rem;
   background: var(--accent-soft);
+  overflow: hidden;
 }
 
 /* 로고 이미지 썸네일: 흰 배경 위에 전체가 보이도록 contain */
