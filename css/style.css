@@ -316,12 +316,13 @@ ul {
   background: #fff;
 }
 
+/* 고정 px 상한이라 어떤 환경에서도 140px 영역 밖으로 잘리지 않는다 */
 .project-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 1.1rem;
-  box-sizing: border-box;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 88%;
+  max-height: 112px;
 }
 
 .project-body {
