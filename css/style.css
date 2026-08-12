@@ -310,6 +310,19 @@ ul {
   background: var(--accent-soft);
 }
 
+/* 로고 이미지 썸네일: 흰 배경 위에 전체가 보이도록 contain */
+.project-thumb:has(img) {
+  background: #fff;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.6rem;
+  box-sizing: border-box;
+}
+
 .project-body {
   padding: 1.1rem 1.25rem 1.4rem;
   display: flex;
