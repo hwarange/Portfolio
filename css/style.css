@@ -105,7 +105,13 @@ ul {
 
 /* ============ Hero ============ */
 .hero {
-  padding: 6rem 1.25rem 5rem;
+  /* 헤더(60px)를 뺀 화면 전체 높이를 차지해 첫 화면에는 히어로만 보인다 */
+  min-height: calc(100vh - 60px);
+  min-height: calc(100svh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1.25rem;
 }
 
 .hero-greeting {
@@ -361,10 +367,6 @@ ul {
 @media (max-width: 720px) {
   .nav-menu {
     display: none;
-  }
-
-  .hero {
-    padding: 4rem 1.25rem 3.5rem;
   }
 
   .about-grid,
