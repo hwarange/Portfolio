@@ -195,6 +195,12 @@ ul {
 
 /* ============ 섹션 공통 ============ */
 .section {
+  /* 히어로처럼 각 섹션이 화면 한 장을 차지하고, 내용은 세로 중앙에 온다 */
+  min-height: calc(100vh - 60px);
+  min-height: calc(100svh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 4rem 1.25rem;
   border-top: 1px solid var(--border);
 }
