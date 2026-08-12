@@ -138,6 +138,31 @@ ul {
   flex-wrap: wrap;
 }
 
+/* ============ 타이핑 효과 ============ */
+.ch {
+  visibility: hidden;
+}
+
+.ch.on {
+  visibility: visible;
+}
+
+.type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 /* ============ 버튼 ============ */
 .btn {
   display: inline-block;
