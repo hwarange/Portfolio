@@ -292,6 +292,7 @@ ul {
 }
 
 .project-card {
+  position: relative; /* .card-link 클릭 영역 확장의 기준 */
   display: flex;
   align-items: stretch;
   background: var(--bg-soft);
@@ -413,6 +414,13 @@ ul {
 
 .project-links a:hover {
   text-decoration: underline;
+}
+
+/* GitHub 링크의 클릭 영역을 카드 전체로 확장 */
+.project-links a.card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 /* ============ Contact ============ */
