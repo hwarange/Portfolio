@@ -195,14 +195,10 @@ ul {
 
 /* ============ 섹션 공통 ============ */
 .section {
-  /* 히어로처럼 각 섹션이 화면 한 장을 차지하고, 내용은 세로 중앙에 온다 */
-  min-height: calc(100vh - 60px);
-  min-height: calc(100svh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 4rem 1.25rem;
+  /* 풀스크린은 히어로만: 나머지 섹션은 콘텐츠 양에 맞춘다 */
+  padding: 5rem 1.25rem;
   border-top: 1px solid var(--border);
+  scroll-margin-top: 60px; /* sticky 헤더에 가려지지 않도록 */
 }
 
 .section-title {
@@ -288,13 +284,16 @@ ul {
 }
 
 /* ============ Projects ============ */
+/* 카드를 가로로 길게: 왼쪽 로고, 오른쪽 본문 */
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .project-card {
+  display: flex;
+  align-items: stretch;
   background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -309,11 +308,13 @@ ul {
 }
 
 .project-thumb {
+  flex: 0 0 220px;
   display: grid;
   place-items: center;
-  height: 140px;
+  padding: 1.5rem;
   font-size: 3rem;
   background: var(--accent-soft);
+  border-right: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -322,29 +323,80 @@ ul {
   background: #fff;
 }
 
-/* 고정 px 상한이라 어떤 환경에서도 140px 영역 밖으로 잘리지 않는다 */
 .project-thumb img {
   display: block;
   width: auto;
   height: auto;
-  max-width: 88%;
-  max-height: 112px;
+  max-width: 100%;
+  max-height: 130px;
 }
 
 .project-body {
-  padding: 1.1rem 1.25rem 1.4rem;
+  flex: 1;
+  padding: 1.4rem 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
+.project-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .project-body h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+}
+
+.project-period {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.project-role {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 .project-body p {
   font-size: 0.92rem;
   color: var(--text-muted);
+}
+
+/* 문제 → 해결 → 결과 스토리 블록 */
+.project-story {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+}
+
+.project-story h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.story-list li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.story-list strong {
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.35rem;
 }
 
 .project-links {
@@ -393,5 +445,17 @@ ul {
   .about-grid,
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* 좁은 화면에서는 가로 카드를 세로로 쌓는다 */
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-thumb {
+    flex: none;
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
 }

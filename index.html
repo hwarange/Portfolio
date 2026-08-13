@@ -7,7 +7,7 @@
   <meta name="description" content="AI를 실제 서비스로 연결하는 End-to-End 개발자 박화랑의 포트폴리오입니다." />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
 </head>
 <body>
   <header class="site-header">
@@ -105,8 +105,20 @@
         <article class="project-card">
           <div class="project-thumb"><img src="assets/seojipsa-logo.png?v=2" alt="서집사 로고" loading="lazy" /></div>
           <div class="project-body">
-            <h3>서집사</h3>
+            <div class="project-head">
+              <h3>서집사</h3>
+              <span class="project-period">2024.12 – 2025.02</span>
+            </div>
+            <p class="project-role">4인 팀 · AI 담당 — RAG 구축 및 AI 파이프라인</p>
             <p>20~30대 청년의 부동산 접근성을 높이기 위한 AI 기반 부동산 매물 검색 및 추천 챗봇 서비스입니다.</p>
+            <div class="project-story">
+              <h4>SQL Agent의 한계 → TAG 기반 파이프라인 재설계</h4>
+              <ul class="story-list">
+                <li><strong>문제</strong> SQLDatabase Toolkit 기반 SQL Agent가 금액 컬럼의 쉼표로 숫자 비교에 실패하고, 전세/월세 조건을 혼동하며, DB 스키마 의미를 잘못 해석했습니다. 스키마 명시·변환 규칙·예시 SQL을 프롬프트에 추가해 개선했지만, Agent 구조상 응답 속도와 흐름 제어에 근본적인 한계가 있었습니다.</li>
+                <li><strong>해결</strong> TAG 논문의 Query Synthesis → Query Execution → Answer Generation 구조를 참고해, 질문 분류·SQL 생성·SQL 정제·DB 조회·응답 생성을 LangGraph 노드 단위로 분리한 파이프라인으로 재설계했습니다. 역세권·엘리베이터 같은 자연어 표현과 DB 컬럼 간 매핑을 조건 해석 규칙으로 개선했습니다.</li>
+                <li><strong>결과</strong> 응답 흐름을 노드 단위로 제어할 수 있게 되었고, 멀티턴 요약과 스트리밍 응답을 추가해 서비스 사용성을 높였습니다.</li>
+              </ul>
+            </div>
             <ul class="tag-list small">
               <li>Python</li><li>LangChain</li><li>LangGraph</li><li>OpenAI API</li>
               <li>RAG</li><li>Chroma</li><li>Django</li><li>React</li>
@@ -121,11 +133,23 @@
         <article class="project-card">
           <div class="project-thumb"><img src="assets/capshop-logo.png?v=2" alt="CapShop 로고" loading="lazy" /></div>
           <div class="project-body">
-            <h3>CapShop</h3>
-            <p>영상 속 상품을 캡처하면 AI가 상품을 분석하고, 유사한 쇼핑 상품을 추천해주는 서비스입니다. AI 서버와 백엔드 개발을 담당했습니다.</p>
+            <div class="project-head">
+              <h3>CapShop</h3>
+              <span class="project-period">2026.05 – 2026.06</span>
+            </div>
+            <p class="project-role">2인 팀 · AI 파이프라인(익스텐션 캡처 → 검색) · 백엔드 담당</p>
+            <p>영상 속 상품을 캡처하면 AI가 상품을 분석하고, 유사한 쇼핑 상품을 추천해주는 서비스입니다. 크롬 익스텐션 → Spring Boot → FastAPI AI 서버로 이어지는 구조로, 백엔드와 AI 서버는 REST API와 요청/응답 DTO로 연동했습니다.</p>
+            <div class="project-story">
+              <h4>LLM 과다 호출 병목 해소 — 검색어 생성 14초 → 1초</h4>
+              <ul class="story-list">
+                <li><strong>문제</strong> 상품 분석 한 번에 LLM 호출이 과도하게 겹치며 전체 검색이 50~100초 이상 걸리는 병목이 발생했습니다.</li>
+                <li><strong>해결</strong> 검색어 쿼리 생성 노드를 LLM 호출에서 키워드 규칙 기반으로 전환하고, 직렬로 실행되던 네이버·구글 검색 노드를 LangGraph 병렬 분기로 재구성했으며, LLM 호출에 timeout과 fallback을 적용했습니다.</li>
+                <li><strong>결과</strong> 검색어 쿼리 처리 시간이 14초에서 1초로 줄었고, 병렬화로 전체 검색 시간을 단축했으며, timeout 상한으로 최악의 경우에도 최대 응답 시간을 보장하게 되었습니다.</li>
+              </ul>
+            </div>
             <ul class="tag-list small">
               <li>Python</li><li>FastAPI</li><li>LangGraph</li><li>Gemini API</li>
-              <li>Java</li><li>Spring Boot</li><li>MyBatis</li><li>Redis</li><li>MySQL</li>
+              <li>Java</li><li>Spring Boot</li><li>MyBatis</li><li>MySQL</li>
             </ul>
             <div class="project-links">
               <a href="https://github.com/SyncShopper/syncshopper" target="_blank" rel="noopener">GitHub</a>
@@ -136,8 +160,26 @@
         <article class="project-card">
           <div class="project-thumb"><img src="assets/dodo-logo.png?v=2" alt="도도 로고" loading="lazy" /></div>
           <div class="project-body">
-            <h3>도도</h3>
-            <p>도서관 서가의 오배열 도서를 탐지하는 AIoT 서비스입니다.</p>
+            <div class="project-head">
+              <h3>도도</h3>
+              <span class="project-period">2026.07 – 2026.08</span>
+            </div>
+            <p class="project-role">6인 팀 · AI 배포 및 파이프라인 최적화 담당 (Jetson Orin Nano)</p>
+            <p>도서관 서가의 오배열 도서를 탐지하는 AIoT 서비스입니다. Jetson 엣지 디바이스에서 YOLO 2단 탐지 + OCR 파이프라인이 동작합니다.</p>
+            <div class="project-story">
+              <h4>촬영당 21.9초 → 1.93초, 상주 GPU 워커로 약 10배 단축</h4>
+              <ul class="story-list">
+                <li><strong>문제</strong> 매 촬영마다 새 프로세스로 전체 파이프라인을 실행해 촬영당 21.9초가 걸렸습니다. 단계별 계측 결과 실제 추론·OCR·저장은 약 2.4초뿐이고, 65%(약 14.3초)가 매번 반복되는 초기화 비용(import·모델 로드·CUDA 초기화·OCR 엔진 로드)임을 확인했습니다.</li>
+                <li><strong>해결</strong> 모델을 메모리에 유지하는 상주 GPU 워커 구조로 전환해 초기화를 기동 시 1회로 옮기고, 8GB 통합 메모리 제약에 맞춰 CI 스모크 테스트와의 GPU 동시 실행 충돌을 배포 게이트로 해결했습니다.</li>
+                <li><strong>결과</strong> 촬영당 처리 시간 21.9초 → 1.93초(약 10배), 로봇 한 바퀴(6촬영) 처리 시간 약 3분 → 14초로 단축했습니다.</li>
+              </ul>
+            </div>
+            <div class="project-story">
+              <h4>YOLO TensorRT 전환 — 모델 추론 최대 2.1배 가속</h4>
+              <ul class="story-list">
+                <li><strong>해결</strong> YOLO 모델 2종을 PyTorch → ONNX → TensorRT FP16으로 변환해 추론 시간을 51.7ms→25.8ms, 40.4ms→18.9ms로 단축했습니다(순수 추론 기준 3.8배). OCR 최적화 후보(rec-only·batch)는 정확도 검증과 계측으로 효과가 없음을 확인하고 기각하는 등, 측정 기반으로 최적화 우선순위를 결정했습니다.</li>
+              </ul>
+            </div>
             <ul class="tag-list small">
               <li>Python</li><li>PyTorch</li><li>Ultralytics YOLO</li><li>PaddleOCR</li>
               <li>ONNX</li><li>TensorRT</li><li>Jetson Orin Nano</li><li>CUDA</li>
