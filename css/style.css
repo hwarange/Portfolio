@@ -275,6 +275,43 @@ img.profile-photo {
   color: var(--accent);
 }
 
+/* 교육 이수 · 자격증/대외활동 */
+.about-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.about-sub h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.timeline-list li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.timeline-list strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.tl-date {
+  display: inline-block;
+  min-width: 9.5rem;
+  font-size: 0.88rem;
+}
+
 /* ============ Skills ============ */
 .skills-grid {
   display: grid;
@@ -482,6 +519,7 @@ img.profile-photo {
   }
 
   .about-grid,
+  .about-sub-grid,
   .skills-grid {
     grid-template-columns: 1fr;
   }
