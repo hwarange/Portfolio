@@ -75,3 +75,43 @@ async function typeElement(el, speed) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// ===== 스킬 툴팁: 숙련도 게이지(5칸) + 근거 =====
+const LEVEL_LABEL = { 1: "하", 2: "하", 3: "중", 4: "상", 5: "상" };
+const skillTip = document.createElement("div");
+skillTip.className = "skill-tip";
+skillTip.hidden = true;
+document.body.appendChild(skillTip);
+
+document.querySelectorAll(".skills-grid .tag-list li[data-level]").forEach((tag) => {
+  tag.addEventListener("mouseenter", () => showSkillTip(tag));
+  tag.addEventListener("mouseleave", hideSkillTip);
+});
+
+function showSkillTip(tag) {
+  const level = Math.min(5, Math.max(1, Number(tag.dataset.level)));
+  const notes = (tag.dataset.notes || "").split("|").filter(Boolean);
+  const cells = [1, 2, 3, 4, 5]
+    .map((i) => `<i${i <= level ? ' class="on"' : ""}></i>`)
+    .join("");
+  skillTip.innerHTML =
+    `<div class="skill-tip-head"><strong>${tag.textContent}</strong>` +
+    `<span class="gauge">${cells}</span>` +
+    `<span class="gauge-label">${LEVEL_LABEL[level]}</span></div>` +
+    `<ul>${notes.map((n) => `<li>${n}</li>`).join("")}</ul>`;
+  skillTip.hidden = false;
+
+  // 태그 위 중앙 정렬, 화면 밖으로 나가면 아래로/안쪽으로 보정
+  const r = tag.getBoundingClientRect();
+  const t = skillTip.getBoundingClientRect();
+  let left = r.left + r.width / 2 - t.width / 2;
+  left = Math.max(8, Math.min(left, window.innerWidth - t.width - 8));
+  let top = r.top - t.height - 10;
+  if (top < 8) top = r.bottom + 10;
+  skillTip.style.left = `${left}px`;
+  skillTip.style.top = `${top}px`;
+}
+
+function hideSkillTip() {
+  skillTip.hidden = true;
+}

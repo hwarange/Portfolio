@@ -7,7 +7,7 @@
   <meta name="description" content="AI를 실제 서비스로 연결하는 End-to-End 개발자 박화랑의 포트폴리오입니다." />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=12" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
 </head>
 <body>
   <header class="site-header">
@@ -94,35 +94,64 @@
     <!-- Skills -->
     <section id="skills" class="section container">
       <h2 class="section-title">Skills</h2>
+      <p class="skills-hint">기술에 마우스를 올리면 숙련도와 근거를 볼 수 있습니다.</p>
       <div class="skills-grid">
         <div class="skill-group">
           <h3>Languages</h3>
           <ul class="tag-list">
-            <li>Python</li><li>Java</li><li>JavaScript</li>
+            <li data-level="4" data-notes="서집사·CapShop·도도 세 프로젝트 모두 주 언어로 사용|LangGraph 파이프라인, FastAPI 서버, Jetson 계측·최적화 스크립트 작성">Python</li>
+            <li data-level="3" data-notes="CapShop Spring Boot 백엔드 개발|AI 서버 연동 클라이언트, DTO, MyBatis 매퍼 구현">Java</li>
+            <li data-level="3" data-notes="CapShop 크롬 익스텐션(영상 캡처) 개발|이 포트폴리오를 바닐라 JS로 직접 제작">JavaScript</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Backend</h3>
           <ul class="tag-list">
-            <li>Spring Boot</li><li>Django</li><li>FastAPI</li>
+            <li data-level="4" data-notes="CapShop AI 서버 구현|LangGraph 파이프라인 서빙, timeout·fallback으로 최대 응답 시간 설계">FastAPI</li>
+            <li data-level="3" data-notes="CapShop 백엔드 담당|RestClient 기반 AI 서버 연동, 상품 검색 API 개발">Spring Boot</li>
+            <li data-level="3" data-notes="서집사 백엔드|AI 챗봇 파이프라인 연동, 스트리밍 응답 처리">Django</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>AI · Data</h3>
+          <h3>AI · LLM</h3>
           <ul class="tag-list">
-            <li>LLM</li><li>RAG</li><li>LangChain</li><li>LangGraph</li>
+            <li data-level="4" data-notes="OpenAI·Gemini API 기반 서비스 2종 개발|프롬프트 설계, 호출 구조 최적화로 검색어 생성 14초→1초">LLM</li>
+            <li data-level="4" data-notes="서집사·CapShop 파이프라인 설계|노드 분리, 병렬 fan-out/fan-in, 조건 분기 설계">LangGraph</li>
+            <li data-level="3" data-notes="서집사 초기 SQL Agent 구현|Toolkit의 한계를 분석하고 LangGraph 파이프라인으로 전환">LangChain</li>
+            <li data-level="3" data-notes="서집사 부동산 매물 검색 RAG 구축|TAG 구조 참고: SQL 생성→조회→응답 생성 분리">RAG</li>
+            <li data-level="3" data-notes="서집사 챗봇 응답 생성에 활용|멀티턴 요약, 스트리밍 응답 구현">OpenAI API</li>
+            <li data-level="3" data-notes="CapShop 상품 분석에 활용|OCR·시각 특징 분석 병렬 호출, timeout·fallback 처리">Gemini API</li>
+            <li data-level="3" data-notes="서집사 벡터 스토어로 사용|매물 검색 RAG의 임베딩 저장·검색">Chroma</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Edge AI · 모델 최적화</h3>
+          <ul class="tag-list">
+            <li data-level="3" data-notes="도도 YOLO 2단 탐지 파이프라인 운영|추론 옵션 튜닝, 단계별 성능 계측">Ultralytics YOLO</li>
+            <li data-level="3" data-notes="YOLO 2종 FP16 엔진 변환|모델 추론 시간 약 2배 단축(51.7ms→25.8ms)">TensorRT</li>
+            <li data-level="3" data-notes="YOLO 모델 ONNX 변환 담당|변환 시 임계값 경계 케이스를 검증해 수용 여부 결정">ONNX</li>
+            <li data-level="3" data-notes="도도 OCR 워커 분리 운영|단계별 프로파일링으로 최적화 후보를 검증·기각">PaddleOCR</li>
+            <li data-level="3" data-notes="도도 Jetson Orin Nano 배포 담당|상주 GPU 워커 설계로 촬영당 21.9초→1.93초">Jetson</li>
+            <li data-level="2" data-notes="도도에서 추론·변환 중심으로 활용|모델 학습보다 배포·최적화 관점의 경험">PyTorch</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Frontend</h3>
           <ul class="tag-list">
-            <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            <li data-level="3" data-notes="이 포트폴리오를 직접 설계·제작|시맨틱 마크업 구성">HTML</li>
+            <li data-level="3" data-notes="다크모드 테마 변수, 반응형 레이아웃 구현|이 포트폴리오를 직접 제작">CSS</li>
+            <li data-level="3" data-notes="CapShop 크롬 익스텐션 개발|이 포트폴리오의 인터랙션을 바닐라 JS로 구현">JavaScript</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Database · Infrastructure</h3>
           <ul class="tag-list">
-            <li>MySQL</li><li>Docker</li><li>AWS</li>
+            <li data-level="3" data-notes="CapShop 백엔드 DB|MyBatis 연동, SQLD 자격 보유(2026.06)">MySQL</li>
+            <li data-level="3" data-notes="서집사 매물 DB로 활용|스키마 분석과 SQL 정제 노드 구축">PostgreSQL</li>
+            <li data-level="3" data-notes="서집사·CapShop 배포 환경 구성|서비스 컨테이너화">Docker</li>
+            <li data-level="3" data-notes="서집사 서비스 배포|클라우드 배포 환경 구성·운영">AWS</li>
+            <li data-level="3" data-notes="도도 CI/CD 운영|배포 게이트로 GPU 자원 충돌 해결(stop→gate→start)">Jenkins</li>
+            <li data-level="3" data-notes="Jetson(L4T) 환경 운영|systemd 서비스, 프레임워크별 가상환경 분리 구성">Linux</li>
           </ul>
         </div>
       </div>
@@ -234,6 +263,6 @@
     <p>© 2026 박화랑. Built with plain HTML/CSS/JS.</p>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>
