@@ -418,6 +418,18 @@ ul {
   font-size: 1.2rem;
 }
 
+.award-badge {
+  display: inline-block;
+  vertical-align: 0.15em;
+  margin-left: 0.3rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
 .project-period {
   font-size: 0.85rem;
   color: var(--text-muted);
